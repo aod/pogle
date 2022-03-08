@@ -1,7 +1,7 @@
-import { createSignal } from "solid-js";
+import { createMemo, createSignal } from "solid-js";
 
 import todaysRandomEmote from "./emote";
-import { check, Guess } from "./lib";
+import { check, Guess, Spot } from "./lib";
 
 if (window.localStorage.getItem("forsenCD") !== todaysRandomEmote) {
   window.localStorage.setItem("forsenCD", todaysRandomEmote);
@@ -39,3 +39,16 @@ export const tryGuess = () => {
     window.localStorage.setItem("guess", guess());
   }
 };
+
+export const keyboard = createMemo(() => {
+  const lut: Record<string, Spot> = {};
+  for (const his of history()) {
+    for (let i = 0; i < his.guess.length; i++) {
+      const c = his.guess[i];
+
+      lut[c] ??= his.spots[i];
+      if (his.spots[i] > lut[c]) lut[c] = his.spots[i];
+    }
+  }
+  return lut;
+});

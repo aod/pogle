@@ -1,7 +1,7 @@
 export enum Spot {
-  Correct,
-  Wrong,
   None,
+  Wrong,
+  Correct,
 }
 
 export interface Guess {
