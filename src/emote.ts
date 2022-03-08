@@ -1,4 +1,3 @@
-// @ts-ignore
 import emotes from "./emotes.json";
 
 const epoch = new Date(0);
