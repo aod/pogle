@@ -1,4 +1,6 @@
 import { createSignal } from "solid-js";
+
+import todaysRandomEmote from "./emote";
 import { check, Guess } from "./lib";
 
 const [guess, setGuess] = createSignal("");
@@ -19,7 +21,7 @@ export const popLetter = () => {
 
 export const tryGuess = () => {
   if (guess().length >= 5 && history().length < 6) {
-    setHistory((h) => [...h, check("bedge", guess())]);
+    setHistory((h) => [...h, check(todaysRandomEmote, guess())]);
     setGuess("");
   }
 };

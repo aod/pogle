@@ -28,6 +28,7 @@ export const check = (word: string, guess: string): Guess => {
     for (let j = 0; j < word.length; j++) {
       if (i !== j && guess[i] === word[j] && !seen.has(guess[i])) {
         spots[i] = Spot.Wrong;
+        seen.add(guess[i])
       }
     }
   }
