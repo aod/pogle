@@ -1,10 +1,14 @@
-import type { Component } from "solid-js";
+import { Component } from "solid-js";
+
+import Navbar from "./components/Navbar";
+import Pogle from "./components/Pogle";
 
 const App: Component = () => {
   return (
-    <h1 className="text-6xl text-indigo-400 font-bold grid place-items-center min-h-screen bg-zinc-900">
-      Hello World
-    </h1>
+    <div class="min-h-screen bg-zinc-900">
+      <Navbar />
+      <Pogle />
+    </div>
   );
 };
 
