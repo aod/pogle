@@ -10,7 +10,7 @@ export interface TileProps {
 const Tile: Component<TileProps> = ({ children, hightlight = false, spot }) => {
   return (
     <div
-      class="w-16 h-16 border-2 text-zinc-100 grid place-items-center text-4xl uppercase font-semibold select-none"
+      class="w-12 h-12 sm:w-16 sm:h-16 border-2 text-zinc-100 grid place-items-center text-4xl uppercase font-semibold select-none"
       classList={{
         "border-zinc-500": hightlight,
         "border-zinc-700": !hightlight,
