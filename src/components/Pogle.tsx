@@ -5,12 +5,16 @@ import Board from "./Board";
 
 const Pogle: Component = () => {
   const handleKeyDown = (e: KeyboardEvent) => {
+    if (e.ctrlKey) {
+      return;
+    }
+
     if (e.code === "Backspace") {
       popLetter();
     } else if (e.code === "Enter") {
       tryGuess();
     } else if (e.key.match(/^[a-zA-Z]$/)) {
-      pushLetter(e.key);
+      pushLetter(e.key.toLowerCase());
     }
   };
 
