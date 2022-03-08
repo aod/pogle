@@ -17,7 +17,7 @@ const Tile: Component<TileProps> = ({ children, hightlight = false, spot }) => {
         "border-none": spot !== undefined,
         "bg-[#538d4e]": spot === Spot.Correct,
         "bg-[#b59f3b]": spot === Spot.Wrong,
-        "bg-zinc-800": spot === Spot.None,
+        "bg-zinc-700": spot === Spot.None,
       }}
     >
       {children}
