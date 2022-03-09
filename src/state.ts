@@ -1,9 +1,8 @@
 import { createMemo, createSignal } from "solid-js";
 
+import emotes from "./emotes.json";
 import todaysRandomEmote from "./emote";
 import { check, Guess, Spot } from "./lib";
-
-import emotes from "./emotes.json";
 
 if (window.localStorage.getItem("forsenCD") !== todaysRandomEmote) {
   window.localStorage.setItem("forsenCD", todaysRandomEmote);
@@ -51,6 +50,7 @@ export const tryGuess = () => {
 
 export const keyboard = createMemo(() => {
   const lut: Record<string, Spot> = {};
+
   for (const his of history()) {
     for (let i = 0; i < his.guess.length; i++) {
       const c = his.guess[i];
@@ -59,5 +59,14 @@ export const keyboard = createMemo(() => {
       if (his.spots[i] > lut[c]) lut[c] = his.spots[i];
     }
   }
+
   return lut;
+});
+
+export const hasWon = createMemo(() => {
+  const his = history();
+  return (
+    his.length !== 0 &&
+    his[his.length - 1].spots.every((spot) => spot === Spot.Correct)
+  );
 });

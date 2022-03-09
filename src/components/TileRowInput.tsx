@@ -1,11 +1,11 @@
 import { Component, For, onCleanup, onMount, Show } from "solid-js";
 
-import { guess, popLetter, pushLetter, tryGuess } from "../state";
+import { guess, hasWon, popLetter, pushLetter, tryGuess } from "../state";
 import Tile from "./Tile";
 
 const TileRowInput: Component = () => {
   const handleKeyDown = (e: KeyboardEvent) => {
-    if (e.ctrlKey) {
+    if (e.ctrlKey || hasWon()) {
       return;
     }
 
