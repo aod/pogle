@@ -8,6 +8,9 @@ const Keyboard: Component = () => {
   return (
     <div class="flex flex-col items-center gap-1.5">
       <div class="flex gap-1.5">
+        <Keys keys={["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]} />
+      </div>
+      <div class="flex gap-1.5">
         <Keys keys={["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"]} />
       </div>
       <div class="flex gap-1.5">
