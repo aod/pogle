@@ -1,6 +1,7 @@
 import { Component, For, onCleanup, onMount, Show } from "solid-js";
 
 import { guess, hasWon, popLetter, pushLetter, tryGuess } from "../state";
+import { range } from "../util";
 import Tile from "./Tile";
 
 const TileRowInput: Component = () => {
@@ -27,7 +28,7 @@ const TileRowInput: Component = () => {
 
   return (
     <div className="flex gap-1.5">
-      <For each={[0, 1, 2, 3, 4]}>
+      <For each={range(5)}>
         {(i) => (
           <Show when={guess()[i]} fallback={<Tile />}>
             <Tile hightlight={true}>{guess()[i]}</Tile>

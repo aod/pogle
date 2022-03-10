@@ -1,4 +1,4 @@
-import { Component, createMemo } from "solid-js";
+import { Component } from "solid-js";
 import { Spot } from "../../lib";
 import { pushLetter } from "../../state";
 

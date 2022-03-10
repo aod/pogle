@@ -15,3 +15,7 @@ const createDailyRNG = () => {
 };
 
 export const dailyRNG = createDailyRNG();
+
+export const range = (n: number) => {
+  return new Array(n).fill(null).map((_, idx) => idx);
+};
