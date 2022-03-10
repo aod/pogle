@@ -1,8 +1,9 @@
 import { Component } from "solid-js";
-import { popLetter, tryGuess } from "../../state";
 
 import Key from "./Key";
 import Keys from "./Keys";
+
+import { popLetter, tryGuess } from "../../state";
 
 const Keyboard: Component = () => {
   return (

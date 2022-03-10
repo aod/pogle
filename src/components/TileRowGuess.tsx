@@ -1,9 +1,10 @@
 import { Component, For, Show } from "solid-js";
 
-import { history } from "../state";
-import { range } from "../util";
 import Tile from "./Tile";
 import TileRow from "./TileRow";
+
+import { history } from "../state";
+import { range } from "../util";
 
 export interface TileRowGuess {
   nth: number;

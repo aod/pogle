@@ -1,9 +1,10 @@
 import { Component, For, onCleanup, onMount, Show } from "solid-js";
 import { createAnimation } from "motion-signals";
 
+import Tile from "./Tile";
+
 import { guess, hasWon, popLetter, pushLetter, tryGuess } from "../state";
 import { range } from "../util";
-import Tile from "./Tile";
 
 const TileRowInput: Component = () => {
   let ref: HTMLDivElement;

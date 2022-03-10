@@ -1,9 +1,9 @@
 import { Component, For, Match, Switch } from "solid-js";
 
+import Key from "./Key";
+
 import { Spot } from "../../lib";
 import { keyboard } from "../../state";
-
-import Key from "./Key";
 
 export interface KeysProps {
   keys: string[];
