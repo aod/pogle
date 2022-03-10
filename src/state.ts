@@ -35,10 +35,10 @@ export const popLetter = () => {
 
 export const tryGuess = () => {
   if (guess().length < 5 || history().length >= 6) {
-    return;
+    return false;
   }
   if (!emotes.includes(guess())) {
-    return;
+    return false;
   }
 
   setHistory((h) => [...h, check(todaysRandomEmote, guess())]);
@@ -46,6 +46,8 @@ export const tryGuess = () => {
 
   window.localStorage.setItem("history", JSON.stringify(history()));
   window.localStorage.setItem("guess", guess());
+
+  return true;
 };
 
 export const keyboard = createMemo(() => {
