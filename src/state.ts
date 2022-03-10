@@ -24,7 +24,7 @@ createEffect(() =>
 );
 
 export const pushLetter = (letter: string) => {
-  if (guess().length >= 5) {
+  if (guess().length >= 5 || hasWon()) {
     return;
   }
   setGuess((g) => g + letter);
