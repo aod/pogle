@@ -8,7 +8,7 @@ import Tile from "./Tile";
 const TileRowInput: Component = () => {
   let ref: HTMLDivElement;
   const { play } = createAnimation(() => ref, {
-    transform: ["translateX(0.5rem)", "translateX(-0.5rem)", "translateX(0)"],
+    x: [5, -5, 0],
   });
 
   const handleKeyDown = (e: KeyboardEvent) => {
