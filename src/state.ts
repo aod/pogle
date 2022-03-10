@@ -1,4 +1,4 @@
-import { createMemo, createSignal } from "solid-js";
+import { createEffect, createMemo, createSignal } from "solid-js";
 
 import emotes from "./emotes.json";
 import todaysRandomEmote from "./emote";
@@ -18,19 +18,20 @@ const [history, setHistory] = createSignal<Guess[]>(
 );
 export { guess, history };
 
+createEffect(() => window.localStorage.setItem("guess", guess()));
+createEffect(() =>
+  window.localStorage.setItem("history", JSON.stringify(history()))
+);
+
 export const pushLetter = (letter: string) => {
   if (guess().length >= 5) {
     return;
   }
   setGuess((g) => g + letter);
-
-  window.localStorage.setItem("guess", guess());
 };
 
 export const popLetter = () => {
   setGuess((g) => g.slice(0, -1));
-
-  window.localStorage.setItem("guess", guess());
 };
 
 export const tryGuess = () => {
@@ -43,9 +44,6 @@ export const tryGuess = () => {
 
   setHistory((h) => [...h, check(todaysRandomEmote, guess())]);
   setGuess("");
-
-  window.localStorage.setItem("history", JSON.stringify(history()));
-  window.localStorage.setItem("guess", guess());
 
   return true;
 };
