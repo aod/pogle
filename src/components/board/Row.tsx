@@ -2,7 +2,7 @@ import { Component } from "solid-js";
 
 import Tile from "./Tile";
 
-const TileRow: Component = () => {
+const Row: Component = () => {
   return (
     <div className="flex gap-1.5">
       <Tile />
@@ -14,4 +14,4 @@ const TileRow: Component = () => {
   );
 };
 
-export default TileRow;
+export default Row;

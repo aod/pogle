@@ -1,6 +1,6 @@
 import { Component } from "solid-js";
 
-import { Spot } from "../lib";
+import { Spot } from "../../lib";
 
 export interface TileProps {
   hightlight?: boolean;

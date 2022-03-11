@@ -3,10 +3,10 @@ import { createAnimation } from "motion-signals";
 
 import Tile from "./Tile";
 
-import { guess, hasWon, popLetter, pushLetter, tryGuess } from "../state";
-import { range } from "../util";
+import { guess, hasWon, popLetter, pushLetter, tryGuess } from "../../state";
+import { range } from "../../util";
 
-const TileRowInput: Component = () => {
+const Input: Component = () => {
   let ref: HTMLDivElement;
   const { play } = createAnimation(() => ref, {
     x: [5, -5, 0],
@@ -47,4 +47,4 @@ const TileRowInput: Component = () => {
   );
 };
 
-export default TileRowInput;
+export default Input;

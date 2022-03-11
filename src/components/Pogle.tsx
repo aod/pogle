@@ -1,6 +1,6 @@
 import { Component, Show } from "solid-js";
 
-import Board from "./Board";
+import Board from "./board";
 import Keyboard from "./keyboard";
 
 import todaysRandomEmote from "../emote";
