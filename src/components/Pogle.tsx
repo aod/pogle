@@ -3,8 +3,7 @@ import { Component, Show } from "solid-js";
 import Board from "./board";
 import Keyboard from "./keyboard";
 
-import todaysRandomEmote from "../emote";
-import { hasWon, history } from "../state";
+import { hasWon, history, todaysRandomEmote } from "../state";
 
 const Pogle: Component = () => {
   return (

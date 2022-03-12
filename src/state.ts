@@ -1,8 +1,10 @@
 import { createEffect, createMemo, createSignal } from "solid-js";
 
 import emotes from "./emotes.json";
-import todaysRandomEmote from "./emote";
 import { check, Guess, Spot } from "./lib";
+import { dailyRNG } from "./util";
+
+export const todaysRandomEmote = emotes[Math.floor(dailyRNG() * emotes.length)];
 
 if (window.localStorage.getItem("forsenCD") !== todaysRandomEmote) {
   window.localStorage.setItem("forsenCD", todaysRandomEmote);
