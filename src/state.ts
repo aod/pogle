@@ -1,6 +1,6 @@
 import { createEffect, createMemo, createSignal } from "solid-js";
 
-import emotes from "./emotes.json";
+import emotes from "./assets/emotes.json";
 import { check, Guess, Spot } from "./lib";
 import { dailyRNG } from "./util";
 
