@@ -36,7 +36,7 @@ const Input: Component = () => {
   return (
     // @ts-ignore
     <div className="flex gap-1.5" ref={ref}>
-      <For each={range(5)}>
+      <For each={[...range(5)]}>
         {(i) => (
           <Show when={guess()[i]} fallback={<Tile />}>
             <Tile hightlight={true}>{guess()[i]}</Tile>

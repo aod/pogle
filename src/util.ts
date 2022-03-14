@@ -16,6 +16,11 @@ const createDailyRNG = () => {
 
 export const dailyRNG = createDailyRNG();
 
-export const range = (n: number) => {
-  return new Array(n).fill(null).map((_, idx) => idx);
+export const range = (n: number): Iterable<number> => {
+  let i = 0;
+  return {
+    [Symbol.iterator]: () => ({
+      next: () => ({ done: i >= n, value: i++ }),
+    }),
+  };
 };

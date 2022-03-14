@@ -10,7 +10,7 @@ import { range } from "../../util";
 const Board: Component = () => {
   return (
     <div class="grid place-items-center gap-1.5">
-      <For each={range(6)}>
+      <For each={[...range(6)]}>
         {(i) => (
           <Switch fallback={<Row />}>
             <Match when={history()[i]}>
