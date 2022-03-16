@@ -17,9 +17,9 @@ const clickOutside = (el: DOMElement, accessor: Accessor<() => void>) => {
 const Modal: Component = ({ children }) => {
   return (
     <>
-      <div class="absolute top-0 left-0 w-full h-full z-10">
+      <div class="absolute top-0 left-0 w-full h-full z-10 px-4 sm:px-0">
         <div
-          class="max-w-prose mx-auto mt-20 py-4 px-8 bg-zinc-800 border border-zinc-600 relative prose prose-zinc dark:prose-invert"
+          class="max-w-prose mx-auto mt-20 py-4 px-8 bg-zinc-800 border border-zinc-600 relative prose-sm sm:prose-md prose prose-zinc dark:prose-invert overflow-auto max-h-[500px] sm:max-h-[800px]"
           //@ts-ignore
           use:clickOutside={() => closeModal()}
           role="dialog"
@@ -43,7 +43,7 @@ const Modal: Component = ({ children }) => {
           {children}
         </div>
       </div>
-      <div class="absolute top-0 left-0 w-full h-full opacity-40 bg-black" />
+      <div class="absolute top-0 left-0 w-full h-full opacity-60 bg-black" />
     </>
   );
 };
