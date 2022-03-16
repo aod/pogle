@@ -1,4 +1,4 @@
-import { createEffect, createMemo, createSignal } from "solid-js";
+import { createEffect, createMemo, createSignal, JSXElement } from "solid-js";
 
 import emotes from "./assets/emotes.json";
 import { check, Guess, Spot } from "./lib";
@@ -18,7 +18,8 @@ const [guess, setGuess] = createSignal(
 const [history, setHistory] = createSignal<Guess[]>(
   JSON.parse(window.localStorage.getItem("history") ?? "[]")
 );
-export { guess, history };
+const [modalContent, setModalContent] = createSignal<JSXElement>();
+export { guess, history, modalContent };
 
 createEffect(() => window.localStorage.setItem("guess", guess()));
 createEffect(() =>
@@ -72,3 +73,11 @@ export const hasWon = createMemo(() => {
     his[his.length - 1].spots.every((spot) => spot === Spot.Correct)
   );
 });
+
+export const showModal = (content: JSXElement) => {
+  setModalContent(content);
+};
+
+export const closeModal = () => {
+  setModalContent(undefined);
+};
