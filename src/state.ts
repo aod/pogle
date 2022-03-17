@@ -74,6 +74,8 @@ export const hasWon = createMemo(() => {
   );
 });
 
+export const hasLost = createMemo(() => history().length === 6 && !hasWon());
+
 export const showModal = (content: JSXElement) => {
   setModalContent(content);
 };
