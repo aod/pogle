@@ -1,6 +1,12 @@
-import { Component } from "solid-js";
+import { Component, For, untrack } from "solid-js";
+
+import { stats } from "../state";
+import { range } from "../util";
 
 const StatsModal: Component = () => {
+  const stat = untrack(stats);
+  const winRate = ((stat.won / stat.played || 0) * 100).toFixed(2);
+
   return (
     <>
       <h1 class="uppercase text-center">Stats</h1>
@@ -8,29 +14,35 @@ const StatsModal: Component = () => {
       <Chart />
 
       <StatRow>
-        <Stat stat="Played">2</Stat>
-        <Stat stat="Won">1</Stat>
-        <Stat stat="Win rate">50.0%</Stat>
+        <Stat stat="Played">{stat.played}</Stat>
+        <Stat stat="Won">{stat.won}</Stat>
+        <Stat stat="Win rate">{winRate}%</Stat>
       </StatRow>
 
       <StatRow>
-        <Stat stat="Current streak">0</Stat>
-        <Stat stat="Max streak">1</Stat>
+        <Stat stat="Current streak">{stat.currentStreak}</Stat>
+        <Stat stat="Max streak">{stat.maxStreak}</Stat>
       </StatRow>
     </>
   );
 };
 
 const Chart: Component = () => {
-  const max = 15;
+  const stat = untrack(stats);
+  const max = Math.max(...stat.guessDistribution);
+
   return (
     <div class="flex flex-col gap-1 mb-8">
-      <ChartRow row={1} val={1} max={max} />
-      <ChartRow row={2} val={1} max={max} />
-      <ChartRow row={3} val={6} max={max} />
-      <ChartRow row={4} val={15} max={max} highlight={true} />
-      <ChartRow row={5} val={6} max={max} />
-      <ChartRow row={6} val={4} max={max} />
+      <For each={[...range(6)]}>
+        {(i) => (
+          <ChartRow
+            row={i + 1}
+            val={stat.guessDistribution[i]}
+            max={max}
+            highlight={stat.prevGuesses - 1 === i}
+          />
+        )}
+      </For>
     </div>
   );
 };

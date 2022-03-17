@@ -1,3 +1,21 @@
+export interface Stats {
+  played: number;
+  won: number;
+  currentStreak: number;
+  maxStreak: number;
+  guessDistribution: number[];
+  prevGuesses: number; // -1 if lost
+}
+
+export const createStats = (): Stats => ({
+  played: 0,
+  won: 0,
+  currentStreak: 0,
+  maxStreak: 0,
+  guessDistribution: [0, 0, 0, 0, 0, 0],
+  prevGuesses: -1,
+});
+
 export enum Spot {
   None,
   Wrong,
@@ -28,7 +46,7 @@ export const check = (word: string, guess: string): Guess => {
     for (let j = 0; j < word.length; j++) {
       if (i !== j && guess[i] === word[j] && !seen.has(guess[i])) {
         spots[i] = Spot.Wrong;
-        seen.add(guess[i])
+        seen.add(guess[i]);
       }
     }
   }
