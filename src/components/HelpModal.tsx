@@ -25,8 +25,8 @@ const HelpModal: Component = () => {
       </p>
       <p>
         The letter <b>K</b> is in the word and in the correct spot. The letter{" "}
-        <b>P</b> is in the word but in the wrong spot. The letters A are not in
-        the word in any spot.
+        <b>P</b> is in the word but in the wrong spot. The letters <b>A</b> are
+        not in the word in any spot.
       </p>
     </>
   );
