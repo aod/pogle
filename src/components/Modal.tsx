@@ -43,7 +43,7 @@ const Modal: Component = ({ children }) => {
           {children}
         </div>
       </div>
-      <div class="absolute top-0 left-0 w-full h-full opacity-60 bg-black" />
+      <div class="fixed top-0 left-0 w-full h-full opacity-60 bg-black" />
     </>
   );
 };
