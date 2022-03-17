@@ -1,17 +1,20 @@
+const EPOCH_DATE = new Date(0);
+const DAYS_IN_MS = 24 * 60 * 60 * 1000;
+
 const createSeededRNG = (seed: number) => () => {
   const x = Math.sin(seed) * 10000;
   return x - Math.floor(x);
 };
 
-const createDailyRNG = () => {
-  const epoch = new Date(0);
+export const daysSinceEpoch = () => {
   const now = new Date();
-  const millis = now.getTime() - epoch.getTime();
+  const millis = now.getTime() - EPOCH_DATE.getTime();
+  const days = Math.round(Math.abs(millis / DAYS_IN_MS));
+  return days;
+};
 
-  const day = 24 * 60 * 60 * 1000;
-  const diff = Math.round(Math.abs(millis / day));
-
-  return createSeededRNG(diff);
+const createDailyRNG = () => {
+  return createSeededRNG(daysSinceEpoch());
 };
 
 export const dailyRNG = createDailyRNG();

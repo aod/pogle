@@ -2,15 +2,15 @@ import { createEffect, createMemo, createSignal, JSXElement } from "solid-js";
 
 import emotes from "./assets/emotes.json";
 import { check, Guess, Spot } from "./lib";
-import { dailyRNG } from "./util";
+import { dailyRNG, daysSinceEpoch } from "./util";
 
-export const todaysRandomEmote = emotes[Math.floor(dailyRNG() * emotes.length)];
-
-if (window.localStorage.getItem("forsenCD") !== todaysRandomEmote) {
-  window.localStorage.setItem("forsenCD", todaysRandomEmote);
+if (window.localStorage.getItem("cacheKey") !== daysSinceEpoch().toString()) {
+  window.localStorage.setItem("cacheKey", daysSinceEpoch().toString());
   window.localStorage.setItem("guess", "");
   window.localStorage.setItem("history", "[]");
 }
+
+export const todaysRandomEmote = emotes[Math.floor(dailyRNG() * emotes.length)];
 
 const [guess, setGuess] = createSignal(
   window.localStorage.getItem("guess") ?? ""
