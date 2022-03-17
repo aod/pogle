@@ -1,9 +1,10 @@
 import { Component } from "solid-js";
-import { Spot } from "../lib";
 
-import Tile from "./board/Tile";
+import Tile from "../board/Tile";
 
-const HelpModal: Component = () => {
+import { Spot } from "../../lib";
+
+const Help: Component = () => {
   return (
     <>
       <h1 class="uppercase text-center">How to play</h1>
@@ -32,4 +33,4 @@ const HelpModal: Component = () => {
   );
 };
 
-export default HelpModal;
+export default Help;

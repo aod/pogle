@@ -3,7 +3,7 @@ import { Portal } from "solid-js/web";
 
 import Navbar from "./Navbar";
 import Pogle from "./Pogle";
-import Modal from "./Modal";
+import Modal from "./modal";
 
 import { modalContent } from "../state";
 

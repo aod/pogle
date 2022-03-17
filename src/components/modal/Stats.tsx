@@ -1,9 +1,9 @@
 import { Component, For, untrack } from "solid-js";
 
-import { stats } from "../state";
-import { range } from "../util";
+import { stats } from "../../state";
+import { range } from "../../util";
 
-const StatsModal: Component = () => {
+const Stats: Component = () => {
   const stat = untrack(stats);
   const winRate = ((stat.won / stat.played || 0) * 100).toFixed(2);
 
@@ -85,4 +85,4 @@ const StatRow: Component = ({ children }) => (
   <div class="flex justify-evenly">{children}</div>
 );
 
-export default StatsModal;
+export default Stats;

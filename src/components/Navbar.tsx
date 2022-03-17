@@ -1,7 +1,7 @@
 import { Component } from "solid-js";
 
-import HelpModal from "./HelpModal";
-import StatsModal from "./StatsModal";
+import Help from "./modal/Help";
+import Stats from "./modal/Stats";
 
 import PagMan from "../assets/pagman.png";
 import { showModal } from "../state";
@@ -11,7 +11,7 @@ const Navbar: Component = () => {
     <nav class="border-b border-zinc-600">
       <h1 class="absolute h-px w-px overflow-hidden text-transparent">Pogle</h1>
       <div className="h-14 max-h-14 container mx-auto flex items-center justify-evenly">
-        <button onclick={() => showModal(<HelpModal />)}>
+        <button onclick={() => showModal(<Help />)}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             class="h-6 w-6 text-zinc-200"
@@ -35,7 +35,7 @@ const Navbar: Component = () => {
           <img src={PagMan} alt="PagMan" class="h-8 w-8" />
           <span>gle</span>
         </a>
-        <button onclick={() => showModal(<StatsModal />)}>
+        <button onclick={() => showModal(<Stats />)}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             class="h-6 w-6 text-zinc-200"

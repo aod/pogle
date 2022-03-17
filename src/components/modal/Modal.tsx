@@ -1,7 +1,7 @@
 import { Accessor, Component, onCleanup } from "solid-js";
 import { DOMElement } from "solid-js/jsx-runtime";
 
-import { closeModal } from "../state";
+import { closeModal } from "../../state";
 
 const clickOutside = (el: DOMElement, accessor: Accessor<() => void>) => {
   const onClick = (e: MouseEvent) => {
