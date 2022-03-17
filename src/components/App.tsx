@@ -9,7 +9,7 @@ import { modalContent } from "../state";
 
 const App: Component = () => {
   return (
-    <div class="min-h-screen bg-zinc-900">
+    <div class="min-h-screen bg-zinc-900 flex flex-col">
       <Navbar />
       <Pogle />
       <Show when={modalContent() !== undefined}>
