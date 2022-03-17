@@ -1,11 +1,11 @@
 import { Component, Show } from "solid-js";
 import { Portal } from "solid-js/web";
 
-import Navbar from "./components/Navbar";
-import Pogle from "./components/Pogle";
-import Modal from "./components/Modal";
+import Navbar from "./Navbar";
+import Pogle from "./Pogle";
+import Modal from "./Modal";
 
-import { modalContent } from "./state";
+import { modalContent } from "../state";
 
 const App: Component = () => {
   return (
