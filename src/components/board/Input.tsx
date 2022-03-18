@@ -3,7 +3,7 @@ import { createAnimation } from "motion-signals";
 
 import Tile from "./Tile";
 
-import { guess, hasWon, popLetter, pushLetter, tryGuess } from "../../state";
+import { guess, popLetter, isDone, pushLetter, tryGuess } from "../../state";
 import { range } from "../../util";
 
 const Input: Component = () => {
@@ -13,7 +13,7 @@ const Input: Component = () => {
   });
 
   const handleKeyDown = (e: KeyboardEvent) => {
-    if (e.ctrlKey || hasWon()) {
+    if (e.ctrlKey || isDone()) {
       return;
     }
 

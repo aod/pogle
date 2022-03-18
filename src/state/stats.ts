@@ -1,6 +1,6 @@
 import { createEffect, createReaction, createSignal } from "solid-js";
 
-import { board, hasLost, hasWon, isDone } from "./board";
+import { board, hasLost, hasCorrectGuess, isDone } from "./board";
 
 import { createStats, Stats } from "../lib";
 
@@ -14,12 +14,12 @@ createEffect(() =>
 
 const track = createReaction(() =>
   setStats((prev) => {
-    const nextCurrentStreak = hasWon() ? prev.currentStreak + 1 : 0;
+    const nextCurrentStreak = hasCorrectGuess() ? prev.currentStreak + 1 : 0;
 
     return {
       ...prev,
       played: prev.played + 1,
-      won: hasWon() ? prev.won + 1 : prev.won,
+      won: hasCorrectGuess() ? prev.won + 1 : prev.won,
       currentStreak: nextCurrentStreak,
       maxStreak:
         nextCurrentStreak >= prev.maxStreak
@@ -30,7 +30,7 @@ const track = createReaction(() =>
         : prev.guessDistribution.map((guesses, idx) =>
             idx === board().length - 1 ? guesses + 1 : guesses
           ),
-      prevGuesses: hasWon() ? board().length : -1,
+      prevGuesses: hasCorrectGuess() ? board().length : -1,
     };
   })
 );

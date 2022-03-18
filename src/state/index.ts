@@ -23,5 +23,5 @@ export const todaysRandomEmote = emotes[Math.floor(dailyRNG() * emotes.length)];
 
 export { guess, pushLetter, popLetter, tryGuess } from "./guess";
 export { stats } from "./stats";
-export { board, hasWon, keyboard, hasLost } from "./board";
+export { board, keyboard, hasLost, isDone } from "./board";
 export { showModal, closeModal, modalContent } from "./modal";

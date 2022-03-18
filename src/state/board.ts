@@ -22,7 +22,7 @@ export const keyboard = createMemo(() => {
   return lut;
 });
 
-export const hasWon = createMemo(() => {
+export const hasCorrectGuess = createMemo(() => {
   const b = board();
   return (
     b.length !== 0 &&
@@ -30,6 +30,10 @@ export const hasWon = createMemo(() => {
   );
 });
 
-export const hasLost = createMemo(() => board().length === 6 && !hasWon());
+export const hasLost = createMemo(
+  () => board().length === 6 && !hasCorrectGuess()
+);
 
-export const isDone = createMemo(() => board().length === 6 || hasWon());
+export const isDone = createMemo(
+  () => board().length === 6 || hasCorrectGuess()
+);
