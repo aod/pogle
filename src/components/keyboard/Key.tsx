@@ -27,10 +27,10 @@ const Key: Component<KeyProps> = ({
 
   return (
     <div
-      class="px-1 py-2 sm:px-2 sm:py-4 rounded text-zinc-100 font-semibold uppercase grid place-items-center select-none cursor-pointer text-xs sm:text-sm"
+      class="rounded text-zinc-100 font-semibold uppercase grid place-items-center select-none cursor-pointer text-xs sm:text-sm touch-manipulation flex-1 sm:flex-none h-12 sm:h-14"
       classList={{
         "w-6 sm:w-10": !wide,
-        "w-12 sm:w-20": wide,
+        "w-12 sm:w-20 basis-4": wide,
         "bg-neutral-500": spot === undefined,
         "bg-[#538d4e]": spot === Spot.Correct,
         "bg-[#b59f3b]": spot === Spot.Wrong,

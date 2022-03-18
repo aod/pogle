@@ -7,17 +7,17 @@ import { popLetter, tryGuess } from "../../state";
 
 const Keyboard: Component = () => {
   return (
-    <div class="flex flex-col items-center gap-1.5">
-      <div class="flex gap-1.5">
+    <div class="flex flex-col items-center gap-1.5 w-full sm:w-auto">
+      <div class="flex w-full sm:w-auto items-stretch gap-1.5">
         <Keys keys={["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]} />
       </div>
-      <div class="flex gap-1.5">
+      <div class="flex w-full sm:w-auto items-stretch gap-1.5">
         <Keys keys={["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"]} />
       </div>
-      <div class="flex gap-1.5">
+      <div class="flex w-full sm:w-auto items-stretch gap-1.5 px-4 sm:px-0">
         <Keys keys={["a", "s", "d", "f", "g", "h", "j", "k", "l"]} />
       </div>
-      <div class="flex gap-1.5">
+      <div class="flex w-full sm:w-auto items-stretch gap-1.5">
         <Key wide onclick={() => tryGuess()}>
           Enter
         </Key>
