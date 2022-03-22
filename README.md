@@ -1,3 +1,3 @@
 # Pogle
 
-Wordle clone for Twitch emotes. Play it at [pogle.vercel.app](https://pogle.vercel.app)
+Wordle clone for Twitch emotes. Play it at [pogle.tk](https://pogle.tk)
