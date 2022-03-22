@@ -10,7 +10,7 @@ const Navbar: Component = () => {
   return (
     <nav class="border-b border-zinc-600">
       <h1 class="absolute h-px w-px overflow-hidden text-transparent">Pogle</h1>
-      <div className="h-14 max-h-14 container mx-auto flex items-center justify-evenly">
+      <div className="h-14 max-h-14 container mx-auto flex items-center justify-between px-4 sm:justify-evenly">
         <button onclick={() => showModal(<Help />)}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
