@@ -26,7 +26,7 @@ const Key: Component<KeyProps> = ({
   };
 
   return (
-    <div
+    <button
       class="rounded text-zinc-100 font-semibold uppercase grid place-items-center select-none cursor-pointer text-xs sm:text-sm touch-manipulation flex-1 sm:flex-none h-12 sm:h-14"
       classList={{
         "w-6 sm:w-10": !wide,
@@ -39,7 +39,7 @@ const Key: Component<KeyProps> = ({
       onclick={handleOnClick}
     >
       {children}
-    </div>
+    </button>
   );
 };
 
