@@ -1,3 +1,5 @@
+import { onCleanup, onMount } from "solid-js";
+
 const EPOCH_DATE = new Date(0);
 const DAYS_IN_MS = 24 * 60 * 60 * 1000;
 
@@ -27,3 +29,27 @@ export const range = (n: number): Iterable<number> => {
     }),
   };
 };
+
+export function createPublisher<Subject extends (...args: any) => any>(
+  subject: Subject
+) {
+  type Return = ReturnType<Subject>;
+  type Subscriber = (arg: Return) => void;
+
+  const subscribers = new Set<Subscriber>();
+
+  const publisher = (...args: Parameters<Subject>): Return => {
+    const result = subject(args);
+    subscribers.forEach((fn) => {
+      fn(result);
+    });
+    return result;
+  };
+
+  const subscribe = (sub: Subscriber) => {
+    onMount(() => subscribers.add(sub));
+    onCleanup(() => subscribers.delete(sub));
+  };
+
+  return { publisher, subscribe };
+}

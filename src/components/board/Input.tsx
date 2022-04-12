@@ -5,12 +5,14 @@ import Tile from "./Tile";
 
 import { guess, popLetter, isDone, pushLetter, tryGuess } from "../../state";
 import { range } from "../../util";
+import { onTryGuess } from "../../state/guess";
 
 const Input: Component = () => {
   let ref: HTMLDivElement;
   const { play } = createAnimation(() => ref, {
     x: [5, -5, 0],
   });
+  onTryGuess((valid) => !valid && play());
 
   const handleKeyDown = (e: KeyboardEvent) => {
     if (e.ctrlKey || isDone()) {
@@ -20,7 +22,7 @@ const Input: Component = () => {
     if (e.code === "Backspace") {
       popLetter();
     } else if (e.code === "Enter") {
-      if (!tryGuess()) play();
+      tryGuess();
     } else if (e.key.match(/^[0-9a-zA-Z]$/)) {
       pushLetter(e.key.toLowerCase());
     }

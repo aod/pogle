@@ -5,6 +5,7 @@ import { board, isDone, setBoard } from "./board";
 
 import emotes from "../assets/emotes.json";
 import { check } from "../lib";
+import { createPublisher } from "../util";
 
 export const [guess, setGuess] = createSignal(
   window.localStorage.getItem("guess") ?? ""
@@ -20,7 +21,7 @@ export const popLetter = () => {
   setGuess((g) => g.slice(0, -1));
 };
 
-export const tryGuess = () => {
+export const tryGuessImpl = () => {
   if (guess().length < 5 || board().length >= 6) {
     return false;
   }
@@ -35,3 +36,6 @@ export const tryGuess = () => {
 
   return true;
 };
+
+export const { publisher: tryGuess, subscribe: onTryGuess } =
+  createPublisher(tryGuessImpl);
