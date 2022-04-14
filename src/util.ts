@@ -39,7 +39,12 @@ export function createPublisher<Subject extends (...args: any) => any>(
   const subscribers = new Set<Subscriber>();
 
   const publisher = (...args: Parameters<Subject>): Return => {
-    const result = subject(args);
+    // Supress (2488) "Object must have a Symbol.iterator method that returns an iterator"
+    // Reason: args is definetly an array which can be spread.
+    //  And calling apply or call method requires passing the this arg, which
+    //  is not favorable.
+    // @ts-ignore
+    const result = subject(...args);
     subscribers.forEach((fn) => {
       fn(result);
     });
