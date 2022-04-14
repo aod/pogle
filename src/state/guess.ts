@@ -1,17 +1,13 @@
-import { batch, createEffect, createSignal } from "solid-js";
+import { batch } from "solid-js";
 
 import { todaysRandomEmote } from ".";
 import { board, isDone, setBoard } from "./board";
 
 import emotes from "../assets/emotes.json";
 import { check } from "../lib";
-import { createPublisher } from "../util";
+import { createPublisher, createStorageSignal } from "../util";
 
-export const [guess, setGuess] = createSignal(
-  window.localStorage.getItem("guess") ?? ""
-);
-
-createEffect(() => window.localStorage.setItem("guess", guess()));
+export const [guess, setGuess] = createStorageSignal("guess", "");
 
 export const pushLetter = (letter: string) => {
   if (guess().length < 5 && !isDone()) setGuess((g) => g + letter);

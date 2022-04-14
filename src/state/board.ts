@@ -1,14 +1,9 @@
-import { createEffect, createMemo, createSignal } from "solid-js";
+import { createMemo } from "solid-js";
 
 import { Guess, Spot } from "../lib";
+import { createStorageSignal } from "../util";
 
-export const [board, setBoard] = createSignal<Guess[]>(
-  JSON.parse(window.localStorage.getItem("board")!) ?? []
-);
-
-createEffect(() =>
-  window.localStorage.setItem("board", JSON.stringify(board()))
-);
+export const [board, setBoard] = createStorageSignal<Guess[]>("board", []);
 
 export const keyboard = createMemo(() => {
   const lut: Record<string, Spot> = {};

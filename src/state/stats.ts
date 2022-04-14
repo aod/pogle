@@ -1,15 +1,13 @@
-import { createEffect, createReaction, createSignal } from "solid-js";
+import { createReaction } from "solid-js";
 
 import { board, hasLost, hasCorrectGuess, isDone } from "./board";
 
 import { createStats, Stats } from "../lib";
+import { createStorageSignal } from "../util";
 
-export const [stats, setStats] = createSignal<Stats>(
-  JSON.parse(window.localStorage.getItem("stats")!) ?? createStats()
-);
-
-createEffect(() =>
-  window.localStorage.setItem("stats", JSON.stringify(stats()))
+export const [stats, setStats] = createStorageSignal<Stats>(
+  "stats",
+  createStats()
 );
 
 const track = createReaction(() =>

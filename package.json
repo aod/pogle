@@ -16,8 +16,8 @@
     "motion-signals": "^0.0.3",
     "postcss": "^8.4.8",
     "tailwindcss": "^3.0.23",
-    "typescript": "^4.5.5",
-    "vite": "^2.8.0",
+    "typescript": "^4.7.0-beta",
+    "vite": "^2.9.4",
     "vite-plugin-solid": "^2.2.5"
   },
   "dependencies": {

@@ -1,4 +1,4 @@
-import { onCleanup, onMount } from "solid-js";
+import { createEffect, createSignal, onCleanup, onMount } from "solid-js";
 
 const EPOCH_DATE = new Date(0);
 const DAYS_IN_MS = 24 * 60 * 60 * 1000;
@@ -52,4 +52,26 @@ export function createPublisher<Subject extends (...args: any) => any>(
   };
 
   return { publisher, subscribe };
+}
+
+export function createStorageSignal<T>(
+  key: string,
+  ...args: Parameters<typeof createSignal<T>>
+): ReturnType<typeof createSignal<T>> {
+  const [accessor, setter] = createSignal(...args);
+
+  const item = window.localStorage.getItem(key)
+  if (item) {
+    try {
+      const value = JSON.parse(item) as T
+      // @ts-ignore
+      setter(value)
+    } catch {}
+  }
+
+  createEffect(() => {
+    window.localStorage.setItem(key, JSON.stringify(accessor()))
+  });
+
+  return [accessor, setter];
 }
